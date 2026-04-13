@@ -8,7 +8,12 @@ app: FastAPI = FastAPI()
 
 @app.get("/")
 def root():
-    return {"message": "Hello world"}
+    return {
+        "message": "Hello world",
+        "nova": "Toto je nova sprava",
+    }
+
+
 
 
 @app.get("/test/1")
@@ -19,9 +24,14 @@ def test():
 def test1():
     return {"message": "Hahahah hehehe"}
 
+@app.get("/roman")
+def roman():
+    return {"message": "Roman Bednárik"}
+
+
 
 @app.get("/user/{user_id}")
-def get_user(user_id: int) -> dict[str, Any]:
+def get_user(user_id: str) -> dict[str, Any]:
     try:
         return {
             "user_id": user_id,
@@ -35,6 +45,6 @@ if __name__ == "__main__":
     uvicorn.run(
         "main:app",
         host="127.0.0.1",
-        port=8000,
+        port=8005,
         reload=True,
     )

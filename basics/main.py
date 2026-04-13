@@ -3,6 +3,8 @@ def main() -> None:
         # premenné
         meno: str = "Anna"
         vek: int = 15
+        
+        premena: str = "Toto je premena bez typu"
 
         print("Premenné:")
         print("Meno:", meno)
@@ -17,8 +19,6 @@ def main() -> None:
         print("a - b =", a - b)
         print("a * b =", a * b)
         print("a / b =", a / b)
-        print("a // b =", a // b)
-        print("a % b =", a % b)
 
         # funkcie
         def pozdrav(meno: str) -> str:
