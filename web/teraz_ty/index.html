@@ -1,28 +1,48 @@
-<!DOCTYPE html>
 <html lang="sk">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moja prva stranka</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>Tu je nadpis</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MotoRent</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-      <p>Tu pis text do prveho odseku.</p>
+<header class="nav">
+  <div class="logo" onclick="location.href='index.html'">MotoRent</div>
+  <nav>
+    <a href="index.html">Domov</a>
+    <a href="#produkty">Motorky</a>
+  </nav>
+</header>
 
-      <h2>Tu je mensi nadpis</h2>
+<section class="hero">
+  <h2>Prémiové 125cc požičanie</h2>
+  <p>Moderný spôsob jazdenia bez kúpy</p>
+  <button onclick="document.getElementById('produkty').scrollIntoView({behavior:'smooth'})">Pozrieť ponuku</button>
+</section>
 
-      <p>Tu mozu studenti pisat dalsi text alebo skusat vlastne HTML tagy.</p>
+<section id="produkty" class="grid">
+  <div class="card" onclick="openPage('supersport')">
+    <img src="https://images.unsplash.com/photo-1611242320536-f12d3541249b">
+    <h3>Supersport</h3>
+  </div>
 
-      <a href="#">Tu moze byt odkaz</a>
+  <div class="card" onclick="openPage('supermoto')">
+    <img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65">
+    <h3>Supermoto</h3>
+  </div>
 
-      <ul>
-        <li>Tu je prva polozka</li>
-        <li>Tu je druha polozka</li>
-        <li>Tu je tretia polozka</li>
-      </ul>
-    </div>
-  </body>
+  <div class="card" onclick="openPage('naked')">
+    <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39">
+    <h3>Naked</h3>
+  </div>
+</section>
+
+<script>
+function openPage(type){
+  window.location.href="list.html?type="+type;
+}
+</script>
+
+</body>
 </html>

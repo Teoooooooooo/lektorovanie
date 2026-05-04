@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Objednávka</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="logo" onclick="location.href='index.html'">MotoRent</div>
+  <nav>
+    <a href="index.html">Domov</a>
+    <a href="index.html#produkty">Motorky</a>
+  </nav>
+</header>
+
+<section class="order">
+  <div class="preview">
+    <img id="bikeImg">
+    <h2 id="bikeName"></h2>
+  </div>
+
+  <div class="form">
+    <label>Dĺžka</label>
+    <input type="range" min="6" max="24" value="12" id="range">
+    <span id="rangeValue"></span>
+
+    <label>Balík</label>
+    <select id="package">
+      <option value="basic">Basic</option>
+      <option value="premium">Premium + 400</option>
+    </select>
+
+    <label><input type="checkbox" id="insurance"> Poistenie</label>
+
+    <h2 id="price">0 €</h2>
+    <button onclick="calc()">Vypočítať</button>
+  </div>
+</section>
+
+<script>
+document.getElementById("bikeName").innerText=localStorage.getItem("bikeName");
+document.getElementById("bikeImg").src=localStorage.getItem("bikeImg");
+
+const range=document.getElementById("range");
+range.oninput=()=>{
+  document.getElementById("rangeValue").innerText=range.value+" mesiacov";
+};
+
+function calc(){
+  let price=range.value*120;
+  if(package.value==="premium") price+=400;
+  if(insurance.checked) price+=200;
+  document.getElementById("price").innerText=price+" €";
+}
+</script>
+
+</body>
+</html>

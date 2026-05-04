@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Výber motorky</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="logo" onclick="location.href='index.html'">MotoRent</div>
+  <nav>
+    <a href="index.html">Domov</a>
+    <a href="index.html#produkty">Motorky</a>
+  </nav>
+</header>
+
+<section class="grid" id="list"></section>
+
+<script>
+const bikes={
+  supersport:[
+    {name:"Yamaha R125",img:"https://images.unsplash.com/photo-1611242320536-f12d3541249b"},
+    {name:"Aprilia RS125",img:"https://images.unsplash.com/photo-1609630875171-b1321377ee65"}
+  ],
+  supermoto:[
+    {name:"KTM 125",img:"https://images.unsplash.com/photo-1580310614729-ccd69652491d"},
+    {name:"Aprilia SX125",img:"https://images.unsplash.com/photo-1558981806-ec527fa84c39"}
+  ],
+  naked:[
+    {name:"Yamaha MT125",img:"https://images.unsplash.com/photo-1503376780353-7e6692767b70"},
+    {name:"Honda CB125R",img:"https://images.unsplash.com/photo-1493238792000-8113da705763"}
+  ]
+};
+
+const type=new URLSearchParams(location.search).get("type");
+const list=document.getElementById("list");
+
+bikes[type].forEach(b=>{
+  list.innerHTML+=`
+    <div class="card" onclick="selectBike('${b.name}','${b.img}')">
+      <img src="${b.img}">
+      <h3>${b.name}</h3>
+    </div>
+  `;
+});
+
+function selectBike(n,i){
+  localStorage.setItem("bikeName",n);
+  localStorage.setItem("bikeImg",i);
+  window.location.href="order.html";
+}
+</script>
+
+</body>
+</html>
